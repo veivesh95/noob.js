@@ -1,0 +1,15 @@
+@import './styles/app.scss';
+
+// font-family from google fonts
+
+@import url('https://fonts.googleapis.com/css?family=Abel|Fredoka+One');
+
+.App {
+  color: silver;
+  font-family: sans-serif;
+  text-align: center;
+
+  .header {
+    font-weight: bold;
+  }
+}
