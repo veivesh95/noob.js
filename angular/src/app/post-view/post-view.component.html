@@ -19,12 +19,12 @@
                     </div>
                 </div>
                 <div class="post__details">
-                    Lorem ipsum                                    
+                    Lorem ipsum
                 </div>
             </div>
         </div>
         <div class="post-hero__footer">
-<div class="post-hero__delete">DELETE</div>
+            <div class="post-hero__delete">DELETE</div>
             <div class="post-hero__time">2m ago</div>
         </div>
     </section>
@@ -47,20 +47,20 @@
                         </div>
                     </div>
                     <div class="post__details">
-                        Lorem ipsum 
+                        Lorem ipsum
                         <br />
                     </div>
                 </div>
             </div>
             <div class="comment__footer">
-<div class="comment__delete">DELETE</div>
+                <div class="comment__delete">DELETE</div>
                 <div class="comment__time">2m ago</div>
             </div>
         </section>
 
     </section>
 
-    <div class="rant__comment layout--center" title="Comment" (click)="addComment()">
+    <div class="rant__comment layout--center" title="Comment" (click)="showNewCommentPopup()">
         <svg class="icon" viewBox="0 0 31 32" width="100%" height="100%">
             <path d="M24.732 24.371v7.629l-7.267-7.267h-8.808c-4.781 
             0-8.657-3.875-8.657-8.657v-7.42c0-4.781 3.876-8.657 
@@ -69,4 +69,6 @@
         </svg>
     </div>
 
-</div> -->
+</div>
+
+<app-add-comment *ngIf="isShowNewCommentPopup" (closeNewCommentModelEvent)="closeNewCommentModel()"></app-add-comment>

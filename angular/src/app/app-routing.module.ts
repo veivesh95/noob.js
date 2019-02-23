@@ -10,8 +10,6 @@ import { RantComponent } from './rant/rant.component';
 const routes: Routes = [
   { path: '', component: RantComponent },
   { path: 'post/id', component: PostViewComponent },
-  { path: 'add/comment', component: AddCommentComponent },
-  { path: 'add/post', component: AddPostComponent },
   { path: 'login', component: LoginComponent },
 ];
 

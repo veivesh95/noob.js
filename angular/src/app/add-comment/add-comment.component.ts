@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,13 +8,15 @@ import { Router } from '@angular/router';
 })
 export class AddCommentComponent implements OnInit {
 
+  @Output() closeNewCommentModelEvent = new EventEmitter();
+  
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   closeCommentPopup() {
-    this.router.navigateByUrl('post/id');
+    this.closeNewCommentModelEvent.emit();
   }
 
 }

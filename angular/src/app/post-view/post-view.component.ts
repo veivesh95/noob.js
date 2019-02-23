@@ -9,12 +9,17 @@ import { Router } from '@angular/router';
 export class PostViewComponent implements OnInit {
 
   constructor(private router: Router) { }
+  isShowNewCommentPopup = false;
 
   ngOnInit() {
   }
 
-  addComment() {
-    this.router.navigateByUrl('add/comment');
+  showNewCommentPopup() {
+    this.isShowNewCommentPopup = true;
+  }
+
+  closeNewCommentModel(){
+    this.isShowNewCommentPopup = false;
   }
 
 }

@@ -9,11 +9,16 @@ import { Router } from '@angular/router';
 export class RantComponent implements OnInit {
 
   constructor(private router: Router) { }
+  isShowNewPostPopup = false;
 
   ngOnInit() {
   }
 
   getAddPost() {
-    this.router.navigateByUrl('add/post');
+    this.isShowNewPostPopup = true;
+  }
+
+  closeNewPostPopup() {
+    this.isShowNewPostPopup = false;
   }
 }

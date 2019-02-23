@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,10 +10,12 @@ export class AddPostComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  @Output() closeNewPostPopupEvent = new EventEmitter();
+
   ngOnInit() {
   }
 
   closeAddPostPopup() {
-    this.router.navigateByUrl('');
+    this.closeNewPostPopupEvent.emit();
   }
 }
