@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { PostViewComponent } from './post-view/post-view.component';
-import { AddCommentComponent } from './add-comment/add-comment.component';
-import { AddPostComponent } from './add-post/add-post.component';
 import { LoginComponent } from './login/login.component';
 import { RantComponent } from './rant/rant.component';
 
 const routes: Routes = [
   { path: '', component: RantComponent },
-  { path: 'post/id', component: PostViewComponent },
+  { path: 'post/:id', component: PostViewComponent },
   { path: 'login', component: LoginComponent },
 ];
 

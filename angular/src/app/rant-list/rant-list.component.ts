@@ -23,12 +23,11 @@ export class RantListComponent implements OnInit {
     });
   }
 
-  viewComment() {
-    this.router.navigateByUrl('post/id');
+  viewComment(id) {
+    this.router.navigateByUrl('post/' + id);
   }
 
   closeNewPostPopup() {
-    console.log(2222)
     this.isShowNewPostPopup = false;
   }
 }
