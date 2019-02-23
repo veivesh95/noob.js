@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataService } from "./data.service";
 import { RantListComponent } from './rant-list/rant-list.component';
 import { RantComponent } from './rant/rant.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RantComponent } from './rant/rant.component';
     LoginComponent,
     RantListComponent,
     RantComponent,
+    MainComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [DataService],
