@@ -35,7 +35,7 @@ export default class Login extends Component<LoginProps, any> {
               </div>
               <form name="login">
                 <div className="login">
-                  <Input type="login" placeholder="USERNAME" autofocus={true} required/>
+                  <Input type="login" placeholder="USERNAME" autoFocus={true} required/>
                   <Input type="login" placeholder="PASSWORD" required />
 
                   <Spinner />
