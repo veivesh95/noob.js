@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 import Rant from './elements/Rant';
 
-export default class RantList extends Component {
+interface RantListProps {
+  rants: any[];
+}
+interface RantListState {}
+
+export default class RantList extends Component<RantListProps, RantListState> {
+  constructor(props: RantListProps) {
+    super(props); 
+  }
+
   render() {
     return (
       <div className="post-list">
-        <Rant
-          rantBody="Hello world"
-          rantCommentCount={23}
-          rantLikeCount={100}
-          rantTime={2}
-        />
+        {this.props.rants.map(post => {
+          return (
+            <Rant
+              key={post.id}
+              rantMyVote={post.myVote}
+              rantBody={post.content}
+              rantCommentCount={post.commentCount}
+              rantLikeCount={post.votes}
+              rantTime={post.displayTime}
+            />
+          );
+        })}
       </div>
     );
   }

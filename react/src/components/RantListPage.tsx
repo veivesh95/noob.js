@@ -3,6 +3,8 @@ import { Spinner } from './elements/Spinner';
 import Login from './Login';
 import RantList from './RantList';
 
+import axios from 'axios';
+
 interface RantListPageProps {
   posts?: any[];
 }
@@ -10,6 +12,7 @@ interface RantListPageProps {
 interface RantListPageState {
   isLoading: boolean;
   isLoggedOut: boolean;
+  postList: any[];
 }
 
 export default class RantListPage extends Component<
@@ -17,11 +20,24 @@ export default class RantListPage extends Component<
   RantListPageState
 > {
   state: RantListPageState = {
-    isLoading: false,
-    isLoggedOut: false
+    isLoading: true,
+    isLoggedOut: false,
+    postList: []
   };
 
-  componentDidMount(): void {}
+  componentDidMount(): void {
+    let response = axios
+      .get('https://api.devrant.thusitha.site/v1/post.list')
+      .then((response: any) => {
+        if (response.data.ok === true) {
+          this.setState({ postList: response.data.posts, isLoading: false });
+          // console.log(this.state.postList);
+        }
+      })
+      .catch((err: any) => {
+        console.error(err);
+      });
+  }
 
   openLoginModal = (): void => {
     const { isLoggedOut } = this.state;
@@ -34,7 +50,7 @@ export default class RantListPage extends Component<
   };
 
   render() {
-    const { isLoading, isLoggedOut } = this.state;
+    const { isLoading, isLoggedOut, postList } = this.state;
     if (isLoading) {
       return <Spinner />;
     } else {
@@ -42,7 +58,7 @@ export default class RantListPage extends Component<
         <section className="main layout--center">
           <div className="main__content layout--wrapped">
             <Login isOpen={isLoggedOut} onClose={this.toggleModal} />
-            <RantList />
+            <RantList rants={postList} />
             <div
               className="rant__add"
               title="Add Rant"

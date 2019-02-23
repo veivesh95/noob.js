@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 interface RantProps {
   rantBody: string;
   rantLikeCount: number;
-  rantTime: number;
+  rantTime: string;
   rantCommentCount: number;
+  rantMyVote: number;
 }
 
 interface RantState {}
@@ -20,20 +21,36 @@ export default class Rant extends Component<RantProps, RantState> {
         <div className="post__inner">
           <div className="score">
             {/* TODO: increase counter */}
-            <div className="score__up layout--center">++</div>
+            <div
+              className={
+                this.props.rantMyVote === 1
+                  ? 'score__up layout--center checked'
+                  : 'score__up layout--center'
+              }
+            >
+              ++
+            </div>
 
             <div className="score__board layout--center">
               {this.props.rantLikeCount}
             </div>
 
             {/* TODO: decrease counter */}
-            <div className="score__down layout--center">--</div>
+            <div
+              className={
+                this.props.rantMyVote === -1
+                  ? 'score__down layout--center checked'
+                  : 'score__down layout--center'
+              }
+            >
+              --
+            </div>
           </div>
 
           <div className="post__body">{this.props.rantBody}</div>
         </div>
         <div className="post__footer">
-          <div className="post__time">{this.props.rantTime}m ago</div>
+          <div className="post__time">{this.props.rantTime}</div>
           <div className="post__comments">
             <svg className="icon" viewBox="0 0 31 32">
               <path
