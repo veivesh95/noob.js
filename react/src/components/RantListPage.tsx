@@ -4,7 +4,6 @@ import Login from './Login';
 import RantList from './RantList';
 
 import axios from 'axios';
-import { NewRant } from './NewRant';
 
 interface RantListPageProps {
   posts?: any[];
@@ -14,8 +13,6 @@ interface RantListPageState {
   isLoading: boolean;
   isLoggedOut: boolean;
   postList: any[];
-  spinnerLoad: boolean;
-  newRant: boolean;
 }
 
 export default class RantListPage extends Component<
@@ -25,9 +22,7 @@ export default class RantListPage extends Component<
   state: RantListPageState = {
     isLoading: true,
     isLoggedOut: false,
-    postList: [],
-    spinnerLoad: false,
-    newRant: false
+    postList: []
   };
 
   componentDidMount(): void {
@@ -49,50 +44,25 @@ export default class RantListPage extends Component<
     this.setState({ isLoggedOut: !isLoggedOut });
   };
 
-  // toggleModal() {
-  //   let loginStatus = this.state.isLoggedOut;
-  //   this.setState({ isLoggedOut: !loginStatus });
-  // }
-
-  toggleNewRant() {
-    const { newRant, isLoggedOut } = this.state;
-    if (isLoggedOut) {
-      this.setState({
-        newRant: true
-      });
-    } else {
-      this.setState({ isLoggedOut: true });
-    }
-  }
+  toggleModal = () => {
+    let loginStatus = this.state.isLoggedOut;
+    this.setState({ isLoggedOut: !loginStatus });
+  };
 
   render() {
-    const {
-      isLoading,
-      isLoggedOut,
-      postList,
-      spinnerLoad,
-      newRant
-    } = this.state;
+    const { isLoading, isLoggedOut, postList } = this.state;
     if (isLoading) {
       return <Spinner />;
     } else {
       return (
         <section className="main layout--center">
           <div className="main__content layout--wrapped">
-            <Login
-              isOpen={isLoggedOut}
-              onClose={this.toggleNewRant}
-              spinnerLoad={spinnerLoad}
-            />
-            <NewRant active={newRant} spinnerLoad={spinnerLoad} />
+            <Login isOpen={isLoggedOut} onClose={this.toggleModal} />
             <RantList rants={postList} />
             <div
               className="rant__add"
               title="Add Rant"
-              onClick={() => {
-                // this.toggleModal();
-                this.toggleNewRant();
-              }}
+              onClick={this.openLoginModal}
             >
               +
             </div>
