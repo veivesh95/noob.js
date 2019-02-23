@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import { Spinner } from './elements/Spinner';
 
-interface HomeProps {
+interface RantListPageProps {
   posts?: any[];
 }
 
-interface HomeState {
+interface RantListPageState {
   isLoading: boolean;
 }
 
-export default class Home extends Component<HomeProps, HomeState> {
-  state: HomeState = {
+export default class RantListPage extends Component<
+  RantListPageProps,
+  RantListPageState
+> {
+  state: RantListPageState = {
     isLoading: true
   };
+
+  componentDidMount(): void {
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 3000);
+  }
 
   render() {
     const { isLoading } = this.state;

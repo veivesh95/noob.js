@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom';
 
 // Custom components (layout)
-import Home from './components/Home';
+import RantListPage from './components/RantListPage';
+import RantDetailsPage from './components/RantDetailsPage';
 
 export interface MainProps {
   //   history: any;
@@ -25,7 +26,8 @@ export default class Main extends Component<MainProps, MainState> {
     return (
       <main>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route path="/" component={RantListPage} />
+          <Route path="/rant/:id" component={RantDetailsPage} />
         </Switch>
       </main>
     );

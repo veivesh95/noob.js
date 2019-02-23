@@ -24,7 +24,7 @@ export const Header = (props: any) => {
         </div>
 
         <div className="join">
-          <span>Join</span>
+          {/* <span>Join</span> */}
           <span>Sign Out</span>
         </div>
       </div>
