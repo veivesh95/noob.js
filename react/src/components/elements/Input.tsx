@@ -5,7 +5,13 @@ export const Input = (props: InputProps) => {
 
   switch (props.type) {
     case 'login':
-      inputElement = <input type="text" placeholder={props.placeholder} />;
+      inputElement = (
+        <input
+          autoFocus={props.autofocus}
+          type="text"
+          placeholder={props.placeholder}
+        />
+      );
       break;
 
     default:
@@ -18,4 +24,5 @@ export const Input = (props: InputProps) => {
 interface InputProps {
   type: string;
   placeholder: string;
+  autofocus: boolean;
 }
