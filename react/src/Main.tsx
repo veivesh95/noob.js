@@ -10,6 +10,7 @@ import {
 // Custom components (layout)
 import RantListPage from './components/RantListPage';
 import RantDetailsPage from './components/RantDetailsPage';
+import { Login } from './components/Login';
 
 export interface MainProps {
   //   history: any;
@@ -26,7 +27,7 @@ export default class Main extends Component<MainProps, MainState> {
     return (
       <main>
         <Switch>
-          <Route path="/" component={RantListPage} />
+          <Route path="/" component={Login} />
           <Route path="/rant/:id" component={RantDetailsPage} />
         </Switch>
       </main>
