@@ -47,5 +47,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: 'AIzaSyAzR0kB4btSIQ2p9YktAM_IplZjFRpoNtU',
+        authDomain: 'eyepax-hackathon-devrant.firebaseapp.com',
+        databaseURL: 'https://eyepax-hackathon-devrant.firebaseio.com',
+        projectId: 'eyepax-hackathon-devrant',
+        storageBucket: 'eyepax-hackathon-devrant.appspot.com',
+        messagingSenderId: '328224533010'
+      };
+      firebase.initializeApp(config);
+    </script>
   </body>
 </html>

@@ -7,7 +7,7 @@ import './styles.scss';
 
 // Main component
 import Main from './Main';
-import { Header } from './components/elements/Header';
+import Header from './components/elements/Header';
 
 function App() {
   return (
