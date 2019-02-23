@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "angular": "noodjs-angular",
+    "default": "noodjs-angular"
+  }
+}

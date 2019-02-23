@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule, Router } from '@angular/router';
-import { PopupComponent } from './popup/popup.component';
 import { PostViewComponent } from './post-view/post-view.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { AddPostComponent } from './add-post/add-post.component';

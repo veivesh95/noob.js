@@ -16,8 +16,8 @@ export class RantListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataService.getPostList().subscribe((data) => {
-      this.post = (data.ok) ?  data.posts : this.post = [];
+    this.dataService.getPostList().subscribe((data: any) => {
+      this.post = (data.ok) ? data.posts : this.post = [];
     });
   }
 
