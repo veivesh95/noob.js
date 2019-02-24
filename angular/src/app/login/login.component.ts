@@ -10,6 +10,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) {
   }
 
+  isShowLoginLoader = false;
   @Output() closeLoginModelEvent = new EventEmitter();
 
   ngOnInit() {
@@ -17,5 +18,10 @@ export class LoginComponent implements OnInit {
 
   closeLoginModel() {
     this.closeLoginModelEvent.emit();
+  }
+
+  onSubmit($event){
+    $event.preventDefault();
+    this.isShowLoginLoader = true;
   }
 }
