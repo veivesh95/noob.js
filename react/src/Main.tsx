@@ -10,7 +10,6 @@ import {
 // Custom components (layout)
 import RantListPage from './components/RantListPage';
 import RantDetailsPage from './components/RantDetailsPage';
-import Login from './components/Login';
 
 export interface MainProps {
   //   history: any;
@@ -27,8 +26,14 @@ export default class Main extends Component<MainProps, MainState> {
     return (
       <main>
         <Switch>
-          <Route path="/" component={RantListPage} />
-          <Route path="/rant/:id" component={RantDetailsPage} />
+          <Route exact path="/rant/:id" component={RantDetailsPage} />} />
+          <Route exact path="/" component={RantListPage} />
+          {/* <Route
+            exact
+            path="/rant/:id"
+            render={props => <RantDetailsPage id={props.match.params.id} />}
+          />
+          <Route exact path="/" render={() => <RantListPage />} /> */}
         </Switch>
       </main>
     );

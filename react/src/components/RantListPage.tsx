@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Spinner } from './elements/Spinner';
 import Login from './Login';
 import RantList from './RantList';
 
 import axios from 'axios';
+import RantDetailsPage from './RantDetailsPage';
 
 interface RantListPageProps {
   posts?: any[];
+  history?: any;
 }
 
 interface RantListPageState {
   isLoading: boolean;
   isLoggedOut: boolean;
   postList: any[];
+  isRantListPage: boolean;
+  isDetailPage: boolean;
+  id: string;
 }
 
 export default class RantListPage extends Component<
@@ -22,7 +27,10 @@ export default class RantListPage extends Component<
   state: RantListPageState = {
     isLoading: true,
     isLoggedOut: false,
-    postList: []
+    postList: [],
+    isDetailPage: false,
+    isRantListPage: true,
+    id: ''
   };
 
   componentDidMount(): void {
@@ -49,25 +57,55 @@ export default class RantListPage extends Component<
     this.setState({ isLoggedOut: !loginStatus });
   };
 
+  openDetail = () => {
+    this.setState({
+      ...this.state,
+      isRantListPage: false,
+      isDetailPage: true
+    });
+    this.props.history.push({
+      pathname: `/rant/${this.state.id}`
+      // state: { selectedRole: selected }
+    });
+  };
+
   render() {
     const { isLoading, isLoggedOut, postList } = this.state;
     if (isLoading) {
       return <Spinner />;
     } else {
       return (
-        <section className="main layout--center">
-          <div className="main__content layout--wrapped">
-            <Login isOpen={isLoggedOut} onClose={this.toggleModal} />
-            <RantList rants={postList} />
-            <div
-              className="rant__add"
-              title="Add Rant"
-              onClick={this.openLoginModal}
-            >
-              +
+        <Fragment>
+          <section className="main layout--center">
+            <div className="main__content layout--wrapped">
+              <RantList rants={postList} openDetail={this.openDetail} />
+              <div
+                className="rant__add"
+                title="Add Rant"
+                onClick={this.openLoginModal}
+              >
+                +
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+
+          {/* {this.state.isRantListPage ? (
+            <section className="main layout--center">
+              <div className="main__content layout--wrapped">
+                <RantList rants={postList} openDetail={this.openDetail} />
+                <div
+                  className="rant__add"
+                  title="Add Rant"
+                  onClick={this.openLoginModal}
+                >
+                  +
+                </div>
+              </div>
+            </section>
+          ) : this.state.isDetailPage ? (
+            <RantDetailsPage id={this.state.id} />
+          ) : null} */}
+        </Fragment>
       );
     }
   }

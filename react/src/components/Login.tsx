@@ -12,6 +12,12 @@ export default class Login extends Component<LoginProps, any> {
     super(props);
   }
 
+  focusInput = (component: any) => {
+    if (component) {
+      component.focus();
+    }
+  };
+
   render() {
     return (
       <div className={this.props.isOpen ? 'popup popup--open' : 'popup'}>
@@ -35,7 +41,12 @@ export default class Login extends Component<LoginProps, any> {
               </div>
               <form name="login">
                 <div className="login">
-                  <Input type="login" placeholder="USERNAME" autoFocus={true} required/>
+                  <Input
+                    type="login"
+                    placeholder="USERNAME"
+                    autoFocus={true}
+                    required
+                  />
                   <Input type="login" placeholder="PASSWORD" required />
 
                   <Spinner />
