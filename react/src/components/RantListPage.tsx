@@ -78,6 +78,7 @@ export default class RantListPage extends Component<
         <Fragment>
           <section className="main layout--center">
             <div className="main__content layout--wrapped">
+            <Login isOpen={isLoggedOut} onClose={this.toggleModal} />
               <RantList rants={postList} openDetail={this.openDetail} />
               <div
                 className="rant__add"

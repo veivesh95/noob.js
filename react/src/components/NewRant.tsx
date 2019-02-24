@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spinner } from './elements/Spinner';
 
 interface NewRantProps {
   isOpen: boolean;
@@ -32,9 +33,7 @@ export default class NewRant extends Component<NewRantProps, NewRantState> {
                 <div className="new-rant">
                   <textarea maxLength={140} />
 
-                  <div className="loader">
-                    <div className="spinner" />
-                  </div>
+                  <Spinner />
 
                   <div className="form__error">Some fields are missing !</div>
 
