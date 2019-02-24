@@ -2,3 +2,5 @@
     <rant-list></rant-list>
     <div class="rant__add" title="Add Rant" (click)="getAddPost()">+</div>
 </div>
+
+<app-add-post *ngIf="isShowNewPostPopup" (closeNewPostPopupEvent)="closeNewPostPopup()"> </app-add-post>

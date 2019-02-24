@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { AddPostComponent } from '../add-post/add-post.component'
 
 @Component({
   selector: 'rant-list',
@@ -9,6 +10,7 @@ import { DataService } from '../data.service';
 })
 export class RantListComponent implements OnInit {
   post: {};
+  isShowNewPostPopup = false;
 
   constructor(
     private router: Router,
@@ -21,7 +23,11 @@ export class RantListComponent implements OnInit {
     });
   }
 
-  viewComment() {
-    this.router.navigateByUrl('post/id');
+  viewComment(id) {
+    this.router.navigateByUrl('post/' + id);
+  }
+
+  closeNewPostPopup() {
+    this.isShowNewPostPopup = false;
   }
 }

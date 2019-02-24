@@ -7,7 +7,7 @@
     <div class="popup__body layout--center">
         <div class="popup__body-inner">
 
-            <div class="form">
+            <div (ngSubmit)="onSubmit($event)">
                 <div class="form__title">
                     JOIN <span class="highlight">#</span>DEVRANT
                 </div>
@@ -20,15 +20,13 @@
                         <input type="text" placeholder="USERNAME" />
                         <input type="password" placeholder="PASSWORD" />
 
-                        <div class="loader">
-                            <div class="spinner"></div>
-                        </div>
+                        <loader *ngIf="isShowLoginLoader"></loader>
 
                         <div class="form__error">
                             Some fields are missing !
                         </div>
 
-                        <input type="submit" value="LET ME IN" />
+                        <input type="submit" value="LET ME IN"/>
                     </div>
                 </form>
             </div>

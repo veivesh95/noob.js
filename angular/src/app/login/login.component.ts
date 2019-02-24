@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,12 +10,18 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) {
   }
 
+  isShowLoginLoader = false;
+  @Output() closeLoginModelEvent = new EventEmitter();
 
   ngOnInit() {
   }
 
   closeLoginModel() {
-    this.router.navigateByUrl('');
-    // this.isShowLoginModel = false;
+    this.closeLoginModelEvent.emit();
+  }
+
+  onSubmit($event){
+    $event.preventDefault();
+    this.isShowLoginLoader = true;
   }
 }

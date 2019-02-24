@@ -1,4 +1,4 @@
-<article class="post" (click)="viewComment()" *ngFor="let eachPost of post">
+<article class="post" (click)="viewComment(eachPost.id)" *ngFor="let eachPost of post">
     <div class="post__inner">
         <div class="score">
             <div class="score__up layout--center" [class.checked]="eachPost.myVote==1">++</div>
@@ -22,3 +22,4 @@
         </div>
     </div>
 </article>
+
