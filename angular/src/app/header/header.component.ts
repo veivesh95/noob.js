@@ -10,15 +10,22 @@ import { AppComponent } from 'app/app.component';
 export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
+  isShowLoginModel = false;
+  isLogedIn = false;
   ngOnInit() {
   }
 
   popUp: any[];
 
-  login() {
-    this.router.navigateByUrl('login');
+  showLoginModel() {
+    this.isShowLoginModel = true;
   }
 
-  logout() {
+  closeLoginModel() {
+    this.isShowLoginModel = false;
+  }
+
+  logout(){
+
   }
 }

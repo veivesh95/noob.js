@@ -20,12 +20,13 @@
     </div>
 
     <div class="join">
-      <!-- <span>Join</span> -->
-      <span (click)="login()">Sign In</span>
-      <!-- <span (click)="logout()">Sign Out</span> -->
+      <span *ngIf="!isLogedIn" (click)="showLoginModel()">Join</span>
+      <span *ngIf="isLogedIn" (click)="logout()">Sign Out</span>
     </div>
   </div>
 </section>
+
+<app-login *ngIf="isShowLoginModel" (closeLoginModelEvent)="closeLoginModel()"></app-login>
 
 <!-- ======================= -->
 <!-- End of Header -->

@@ -7,8 +7,7 @@ import { RantComponent } from './rant/rant.component';
 
 const routes: Routes = [
   { path: '', component: RantComponent },
-  { path: 'post/:id', component: PostViewComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'post/:id', component: PostViewComponent }
 ];
 
 @NgModule({
