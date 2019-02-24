@@ -8,16 +8,35 @@ import './styles.scss';
 // Main component
 import Main from './Main';
 import Header from './components/elements/Header';
+import Login from './components/Login';
+import { createBrowserHistory } from 'history';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Fragment>
-        <Header />
-        <Main />
-      </Fragment>
-    </BrowserRouter>
-  );
+interface AppProps {}
+interface AppState {
+  isLoggedOut: boolean;
+}
+
+export default class App extends Component<AppProps, AppState> {
+  state: AppState = { isLoggedOut: false };
+  constructor(props: AppProps) {
+    super(props);
+  }
+
+  toggleModal = () => {
+    console.log('Modal toggle');
+  };
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Fragment>
+          <Login isOpen={this.state.isLoggedOut} onClose={this.toggleModal} />
+          <Header />
+          <Main />
+        </Fragment>
+      </BrowserRouter>
+    );
+  }
 }
 
 const rootElement = document.getElementById('root');

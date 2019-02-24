@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import createHistory from 'history/createBrowserHistory';
+import { createHashHistory, createBrowserHistory } from 'history';
 
 interface RantProps {
   rantBody: string;
@@ -6,18 +8,33 @@ interface RantProps {
   rantTime: string;
   rantCommentCount: number;
   rantMyVote: number;
+  rantId: string;
+  openDetail: any;
 }
 
-interface RantState {}
+interface RantState {
+  postId: string;
+}
+
+export const history = createHistory();
 
 export default class Rant extends Component<RantProps, RantState> {
   constructor(props: RantProps) {
     super(props);
   }
 
+  state: RantState = {
+    postId: this.props.rantId
+  };
+
+  openDetailPage() {
+    console.log(this.state.postId);
+    history.push(`/rant/${this.state.postId}`);
+  }
+
   render() {
     return (
-      <article className="post">
+      <article className="post" onClick={() => this.openDetailPage()}>
         <div className="post__inner">
           <div className="score">
             {/* TODO: increase counter */}
